@@ -1,8 +1,8 @@
 module.exports = {
   apps: [
     {
-      name: 'core-service',
-      script: 'dist/apps/core-service/src/main.js',
+      name: 'customer-service',
+      script: 'dist/apps/customer-service/src/main.js',
       instances: 1,
       exec_mode: 'fork',
       autorestart: true,

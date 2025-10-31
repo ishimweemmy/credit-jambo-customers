@@ -6,7 +6,7 @@ import { BrainConfigService } from './brain-config.service';
 import {
   RESET_PASSWORD_CACHE,
   USER_BY_ID_CACHE,
-} from '@core-service/common/constants/brain.constants';
+} from '@customer-service/common/constants/brain.constants';
 
 // Generate random OTP (moved from deleted all.helpers.ts)
 function generateRandomOTP(): number {

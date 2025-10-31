@@ -1,12 +1,12 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { SavingsAccount } from '@core-service/modules/savings/entities/savings-account.entity';
-import { DailyBalanceSnapshot } from '@core-service/modules/savings/entities/daily-balance-snapshot.entity';
-import { TransactionService } from '@core-service/modules/transaction/transaction.service';
-import { ETransactionType } from '@core-service/modules/transaction/enums/transaction-type.enum';
+import { SavingsAccount } from '@customer-service/modules/savings/entities/savings-account.entity';
+import { DailyBalanceSnapshot } from '@customer-service/modules/savings/entities/daily-balance-snapshot.entity';
+import { TransactionService } from '@customer-service/modules/transaction/transaction.service';
+import { ETransactionType } from '@customer-service/modules/transaction/enums/transaction-type.enum';
 import { NotificationPreProcessor } from '@crons-service/integrations/notification/notification.preprocessor';
-import { EmailTemplates } from '@core-service/configs/email-template-configs/email-templates.config';
+import { EmailTemplates } from '@customer-service/configs/email-template-configs/email-templates.config';
 import { SavingsAccountQueries } from '../repositories/savings-account.queries';
 import { calculateDailyInterest } from '../helpers/interest.helper';
 import { isLastDayOfMonth, getMonthName } from '../helpers/banking.helpers';

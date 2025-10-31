@@ -1,6 +1,6 @@
 import { Repository } from 'typeorm';
-import { SavingsAccount } from '@core-service/modules/savings/entities/savings-account.entity';
-import { EAccountStatus } from '@core-service/modules/savings/enums/account-status.enum';
+import { SavingsAccount } from '@customer-service/modules/savings/entities/savings-account.entity';
+import { EAccountStatus } from '@customer-service/modules/savings/enums/account-status.enum';
 
 export class SavingsAccountQueries {
   constructor(

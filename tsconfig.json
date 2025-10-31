@@ -20,8 +20,8 @@
     "paths": {
       "@app/common": ["libs/common/src"],
       "@app/common/*": ["libs/common/src/*"],
-      "@core-service/": ["apps/core-service/src"],
-      "@core-service/*": ["apps/core-service/src/*"],
+      "@customer-service/": ["apps/customer-service/src"],
+      "@customer-service/*": ["apps/customer-service/src/*"],
       "@integration-service/": ["apps/integration-service/src"],
       "@integration-service/*": ["apps/integration-service/src/*"],
       "@notification-service/": ["apps/notification-service/src"],

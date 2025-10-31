@@ -1,11 +1,11 @@
 services:
-  core-service:
+  customer-service:
     build:
       context: .
-      dockerfile: ./apps/core-service/Dockerfile
-    command: yarn start:dev core-service
+      dockerfile: ./apps/customer-service/Dockerfile
+    command: yarn start:dev customer-service
     env_file:
-      - ./apps/core-service/.env
+      - ./apps/customer-service/.env
     environment:
       - DB_HOST=postgres #  this is useful since localhost is not accessible from the container
       - DB_PORT=5432 # Use PostgreSQL's default internal port

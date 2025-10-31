@@ -38,7 +38,7 @@ api.ijabo.strettch.dev {
 
     # Handle Swagger documentation specifically
     handle /api/documentation* {
-        reverse_proxy core-service:4010 {
+        reverse_proxy customer-service:4010 {
             header_up Host {host}
             header_up X-Real-IP {remote_host}
 
@@ -49,7 +49,7 @@ api.ijabo.strettch.dev {
     }
 
     # Regular API traffic
-    reverse_proxy core-service:4010 {
+    reverse_proxy customer-service:4010 {
         header_up Host {host}
         header_up X-Real-IP {remote_host}
 
@@ -116,7 +116,7 @@ notif.ijabo.strettch.dev {
 
     # Handle Swagger documentation specifically
     handle /api/documentation* {
-        reverse_proxy core-service:4020 {
+        reverse_proxy customer-service:4020 {
             header_up Host {host}
             header_up X-Real-IP {remote_host}
 
@@ -149,7 +149,7 @@ intergration.ijabo.strettch.dev {
 
     # Handle Swagger documentation specifically
     handle /api/documentation* {
-        reverse_proxy core-service:4030 {
+        reverse_proxy customer-service:4030 {
             header_up Host {host}
             header_up X-Real-IP {remote_host}
 

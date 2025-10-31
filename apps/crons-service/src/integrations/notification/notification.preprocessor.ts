@@ -3,11 +3,11 @@ import {
   EMAIL_TEMPLATES_CONFIG,
   EmailTemplateDataMap,
   EmailTemplates,
-} from '@core-service/configs/email-template-configs/email-templates.config';
+} from '@customer-service/configs/email-template-configs/email-templates.config';
 import { ClassConstructor, plainToInstance } from 'class-transformer';
 import { validate } from 'class-validator';
 import { NotificationService } from './notification.service';
-import { compileTemplate } from '@core-service/configs/email-template-configs/email-templates-compiler.config';
+import { compileTemplate } from '@customer-service/configs/email-template-configs/email-templates-compiler.config';
 
 @Injectable()
 export class NotificationPreProcessor {

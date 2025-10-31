@@ -1,12 +1,12 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, MoreThan } from 'typeorm';
-import { SavingsAccount } from '@core-service/modules/savings/entities/savings-account.entity';
-import { DailyBalanceSnapshot } from '@core-service/modules/savings/entities/daily-balance-snapshot.entity';
-import { EAccountTier } from '@core-service/modules/savings/enums/account-tier.enum';
-import { EKYCStatus } from '@core-service/modules/user/enums/kyc-status.enum';
+import { SavingsAccount } from '@customer-service/modules/savings/entities/savings-account.entity';
+import { DailyBalanceSnapshot } from '@customer-service/modules/savings/entities/daily-balance-snapshot.entity';
+import { EAccountTier } from '@customer-service/modules/savings/enums/account-tier.enum';
+import { EKYCStatus } from '@customer-service/modules/user/enums/kyc-status.enum';
 import { NotificationPreProcessor } from '@crons-service/integrations/notification/notification.preprocessor';
-import { EmailTemplates } from '@core-service/configs/email-template-configs/email-templates.config';
+import { EmailTemplates } from '@customer-service/configs/email-template-configs/email-templates.config';
 import { TIER_LIMITS, TIER_UPGRADE } from '../constants/banking.constants';
 import { SavingsAccountQueries } from '../repositories/savings-account.queries';
 import { calculateMonthsBetween } from '../helpers/banking.helpers';

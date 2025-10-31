@@ -8,8 +8,7 @@ export class SlackService {
   private readonly webhookUrl: string;
 
   constructor(private readonly httpService: HttpService) {
-    this.webhookUrl =
-      'https://hooks.slack.com/services/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';
+    this.webhookUrl = '';
   }
 
   async sendMessage(text: string): Promise<boolean> {

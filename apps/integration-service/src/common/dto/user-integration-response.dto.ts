@@ -1,4 +1,4 @@
-import { EUserRole } from '@core-service/modules/user/enums/user-role.enum';
+import { EUserRole } from '@customer-service/modules/user/enums/user-role.enum';
 import { CollegeIntegration } from '@integration-service/modules/college/entities/college.entity';
 import { DepartmentIntegration } from '@integration-service/modules/department/entitites/department.entity';
 import { IndustrialAttachment } from '@integration-service/modules/industrial-attachment/entities/industrial-attachment.dto';

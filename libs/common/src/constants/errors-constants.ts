@@ -1,7 +1,7 @@
 import {
   DESCRIPTION_MAX_LENGTH,
   SKILL_NAME_MAX_LENGTH,
-} from '@core-service/common/constants/all.constants';
+} from '@customer-service/common/constants/all.constants';
 
 // not found
 export const _400 = {

@@ -62,7 +62,7 @@ export class CronsConfigService {
       password: this.dbPass,
       database: this.dbName,
       entities: [
-        'dist/apps/core-service/**/*.entity.js',
+        'dist/apps/customer-service/**/*.entity.js',
         'dist/apps/crons-service/**/*.entity.js',
       ],
       synchronize: this.environment !== AppEnvironment.Production,

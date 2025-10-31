@@ -1,5 +1,5 @@
-// Re-export TIER_LIMITS from core-service to avoid duplication
-export { TIER_LIMITS } from '@core-service/modules/savings/constants/tier.constants';
+// Re-export TIER_LIMITS from customer-service to avoid duplication
+export { TIER_LIMITS } from '@customer-service/modules/savings/constants/tier.constants';
 
 // Interest calculation
 export const DAYS_IN_YEAR = 365;

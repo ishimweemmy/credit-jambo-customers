@@ -18,13 +18,13 @@
         "tsConfigPath": "libs/common/tsconfig.lib.json"
       }
     },
-    "core-service": {
+    "customer-service": {
       "type": "application",
-      "root": "apps/core-service",
+      "root": "apps/customer-service",
       "entryFile": "main",
-      "sourceRoot": "apps/core-service/src",
+      "sourceRoot": "apps/customer-service/src",
       "compilerOptions": {
-        "tsConfigPath": "apps/core-service/tsconfig.app.json",
+        "tsConfigPath": "apps/customer-service/tsconfig.app.json",
         "assets": [
           {
             "include": "**/*.proto",

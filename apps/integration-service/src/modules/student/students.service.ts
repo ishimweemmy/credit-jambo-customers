@@ -19,7 +19,7 @@ import {
 import { IndustrialAttachmentService } from '../industrial-attachment/industrial-attachment.service';
 import { Graduate } from './entities/graduate.entity';
 import { CollegeIntegrationService } from '../college/college.service';
-import { EducationLevel } from '@core-service/modules/user/enums/education-level.enum';
+import { EducationLevel } from '@customer-service/modules/user/enums/education-level.enum';
 
 @Injectable()
 export class StudentsService {

@@ -1,6 +1,6 @@
 import { Repository, LessThan } from 'typeorm';
-import { Repayment } from '@core-service/modules/loan/entities/repayment.entity';
-import { ERepaymentStatus } from '@core-service/modules/loan/enums/repayment-status.enum';
+import { Repayment } from '@customer-service/modules/loan/entities/repayment.entity';
+import { ERepaymentStatus } from '@customer-service/modules/loan/enums/repayment-status.enum';
 
 export class RepaymentQueries {
   constructor(private readonly repaymentRepository: Repository<Repayment>) {}

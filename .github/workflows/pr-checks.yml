@@ -9,7 +9,7 @@ jobs:
     runs-on: self-hosted
     strategy:
       matrix:
-        service: [core-service, notification-service, integration-service]
+        service: [customer-service, notification-service, integration-service]
 
     steps:
       - uses: actions/checkout@v3

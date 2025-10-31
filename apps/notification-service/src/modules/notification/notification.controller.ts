@@ -12,7 +12,7 @@ import { ENotificationStatus } from '@app/common/enums/notification-status.enum'
 import { ApiBearerAuth, ApiQuery } from '@nestjs/swagger';
 import { AuthUser } from '@notification-service/common/decorators/auth-checker.decorator';
 
-// TODO: Protect these endpoints so that they can only be accessed by authenticated users or Consider dispatching them to core-service through GRPC
+// TODO: Protect these endpoints so that they can only be accessed by authenticated users or Consider dispatching them to customer-service through GRPC
 @Controller('notifications')
 @ApiBearerAuth()
 export class NotificationController {

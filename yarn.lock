@@ -737,9 +737,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ijabo-backend/core-service@workspace:apps/core-service":
+"@ijabo-backend/customer-service@workspace:apps/customer-service":
   version: 0.0.0-use.local
-  resolution: "@ijabo-backend/core-service@workspace:apps/core-service"
+  resolution: "@ijabo-backend/customer-service@workspace:apps/customer-service"
   dependencies:
     "@nestjs/common": "npm:^10.4.15"
     "@nestjs/jwt": "npm:^10.2.0"
