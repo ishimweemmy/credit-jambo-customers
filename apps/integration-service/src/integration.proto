@@ -1,0 +1,276 @@
+syntax = "proto3";
+
+package integration;
+import "google/protobuf/empty.proto";
+
+
+service StudentService {
+  rpc FindStudentByEmailAndRegistationNumber (StudentLookup) returns (StudentResponse) {}
+  rpc FindStudentByRegistrationNumber (StudentByRegistrationNumberLookup) returns (StudentResponse) {}
+  rpc FindStudentMarksByRegistationNumber (StudentMarksLookup) returns (StudentMarksListResponse) {}
+  rpc FindGraduateByRegstrationNumber (GraduateLookup) returns (UserResponse) {}
+
+}
+
+message GraduateLookup {
+  string registrationNumber = 1;
+}
+
+message GraduateResponse {
+  string id = 1;
+  string registrationNumber = 2;
+  string department = 3;
+  string firstName = 4;
+  string lastName = 5;
+  string graduationDate = 6;
+  string academicYear = 7;
+  string academicStatus = 8;
+  CollegeResponse misCollege = 9;
+}
+
+message StudentLookup {
+  string registrationNumber = 1;
+  string email = 2;
+}
+
+service IndustrialAttachmentService{
+    rpc FindAllByStudent (AttachmentLookup) returns (AttachmentListResponse) {}
+}
+
+message AttachmentLookup {
+  string registrationNumber = 1;
+}
+
+message AttachmentListResponse {
+  repeated AttachmentResponse attachments = 1;
+}
+
+message AttachmentResponse { 
+ string academicYear = 1;
+ string registratinNumber = 2;
+ string company = 3;
+ string startDate = 4;
+ string endDate = 5;
+}
+
+message StudentByRegistrationNumberLookup {
+  string registrationNumber = 1;
+}
+message DeparmentLookup {
+  string id = 1;
+}
+
+message DepartmentResponse {
+  string id = 1;
+  string departmentName = 2;
+  string departmentCode = 3;
+  string type = 4;
+  repeated ProgramResponse programs = 5;
+}
+
+message StudentResponse {
+  string id = 1;
+  string registrationNumber = 2;
+  string lastName = 3;
+  string firstName = 4;
+  string gender = 5;
+  string dateOfBirth = 6;
+  string email = 7;
+  string telephone = 8;
+  string nationality = 9;
+  string nationID = 10;
+  string educationLevel = 11;
+  string graduationYear = 12;
+  string yearOfStudy = 13;
+  DepartmentResponse misDepartment = 16;
+  CollegeResponse college = 17;
+}
+
+service TeacherService {
+  rpc FindTeacher (TeacherLookup) returns (TeacherResponse) {}
+  rpc FindHod (TeacherLookup) returns (TeacherResponse) {}
+  rpc FindByIdOrEmail (TeacherByRegistrationNumberLookup) returns (UserResponse) {}
+}
+
+message TeacherLookup {
+  string registrationNumber = 1;
+  string email = 2;
+}
+
+message TeacherByRegistrationNumberLookup {
+  string registrationNumber = 1;
+}
+
+message TeacherResponse {
+  string id = 1;
+  string college = 2;
+  string teachingLevel = 3;
+  string firstName = 4;
+  string email = 5;
+  string telephone = 6;
+  string nationalId = 7;
+  string address = 8;
+  string gender = 9;
+  string nationality = 13;
+  string position = 14;
+  string isHod = 15;
+  DepartmentResponse misDepartment = 16;
+  CollegeResponse misCollege = 17;
+  string lastName = 18;
+}
+
+service DepartmentService {
+  rpc FindDepartment(DeparmentLookup) returns (DepartmentResponse) {}
+  rpc FindAllDepartments(Empty) returns (DepartmentsResponse) {}
+}
+
+message Empty {} 
+
+service CollegeIntegrationService {
+  rpc FindCollege(CollegeLookup) returns (CollegeResponse) {}
+  rpc FindAllColleges(Empty) returns (CollegeListResponse) {}
+  rpc FindCollegeModules(CollegeLookup) returns (CollegeModulesResponse) {}
+  rpc FindCollegeModulesByDepartment(CollegeModuleLookup) returns (CollegeModulesResponse) {}
+}
+
+service AcademicYearService {
+  rpc FindCurrentAcademicYear(Empty) returns (AcademicYearResponse) {}
+}
+service UserIntegrationService {
+  rpc FindAllUsers(Search) returns (UserListResponse) {}
+} 
+
+message UserListResponse {
+  repeated UserResponse users = 1;
+}
+
+message UserResponse {
+  string department = 2;
+  string firstName = 3;
+  string lastName = 4;
+  string email = 5;
+  string phoneNumber = 6;
+  string nationalId = 7;
+  string dateOfBirth = 8;
+  string gender = 9;
+  string nationality = 10;
+  string qualificationLevel = 11;
+  string qualification = 12;
+  DepartmentResponse misDepartment = 13;
+  CollegeResponse college = 14;
+  string telephone = 15;
+  string registrationNumber = 16;
+  string graduationYear = 17;
+  string academicYear = 18;
+  string academicStatus = 29;
+  CollegeResponse misCollege = 20;
+  string educationLevel = 21;
+}
+
+
+message Search {
+  string searchKey = 1;
+}
+
+message CollegeListResponse {
+  repeated CollegeResponse colleges = 1;
+}
+message CollegeLookup {
+  string id = 1;
+}
+
+message CollegeModuleLookup {
+  string departmentName = 1;
+  string collegeName = 2;
+  string page = 3;
+  string limit = 4;
+  string searchKeyword = 5;
+}
+
+message CollegeResponse {
+  string id = 1;
+  string polytechnic = 2;
+  string shortName = 3;
+  string accountNumber = 4;
+  string email = 5;
+}
+
+
+
+message AcademicYearLookup {
+  string id = 1;
+  string name = 2;
+}
+
+message AcademicYearResponse {
+  string id = 1;
+  string name = 2;
+}
+
+service CompanyIntegrationService {
+  rpc FindCompany(CompanyLookup) returns (CompanyResponse){}
+  rpc FindAllCompanies(Search) returns (CompanyListResponse){}
+}
+
+message CompanyListResponse {
+  repeated CompanyResponse companies = 1;
+}
+
+message CompanyLookup {
+  string id = 1;
+}
+
+message CompanyResponse {
+  string id = 1;
+  string name = 2;
+  string sector = 3;
+  string phone = 4;
+  string email = 5;
+}
+
+
+message StudentMarksLookup {
+  string registrationNumber = 1;
+}
+
+
+message StudentMarksResponse {
+  string id = 1;
+  string registrationNumber = 2;
+  string moduleId = 3;
+  string studentMarks = 4;
+  string academicYear = 5;
+  string assignment = 6;
+  string exam = 7;
+  string semester = 8;
+}
+
+message StudentMarksListResponse {
+  repeated StudentMarksResponse marks = 1;
+}
+
+message CollegeModuleResponse {
+  string id = 1;
+  string collegeId = 2;
+  string yearOfStudy = 3;
+  string moduleCode = 4;
+  string moduleName = 5;
+  string credits = 6;
+  string academicYear = 7;
+  string departmentId = 8;
+}
+
+message CollegeModulesResponse {
+  repeated CollegeModuleResponse modules = 1;
+}
+
+message ProgramResponse {
+  string id = 1;
+  string programName = 2;
+  string programCode = 3;
+  string departmentId = 4;
+}
+
+message DepartmentsResponse {
+  repeated DepartmentResponse departments = 1;
+}

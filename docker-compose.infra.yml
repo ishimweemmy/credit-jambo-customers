@@ -1,0 +1,102 @@
+services:
+  postgres:
+    image: mirror.gcr.io/postgres:latest
+    container_name: postgres-db
+    restart: always
+    ports:
+      - '5434:5432'
+    env_file:
+      - database.env
+    volumes:
+      - shared-db-data:/var/lib/postgresql/data
+
+  notification-db:
+    image: mirror.gcr.io/postgres
+    container_name: notification-postgres-db
+    restart: always
+    ports:
+      - '5435:5432'
+    env_file:
+      - database.env
+    volumes:
+      - notification-db-data:/var/lib/postgresql/data
+
+  mariadb:
+    image: mirror.gcr.io/mariadb:10.4
+    container_name: mariadb
+    env_file:
+      - database.env
+    ports:
+      - '3306:3306'
+    volumes:
+      - maria-db-data:/var/lib/mysql
+
+  rabbitmq:
+    image: mirror.gcr.io/rabbitmq:4.0.8 # TODO: This version should be updated to the latest one once its bug free.
+    ports:
+      - '5672:5672'
+  clickhouse:
+    image: mirror.gcr.io/clickhouse/clickhouse-server:latest
+    container_name: ijabo-backend-clickhouse
+    ports:
+      - '8123:8123' # HTTP interface
+      - '9002:9000' # Native interface
+      - '9009:9009' # Interserver HTTP port
+    volumes:
+      - clickhouse_data:/var/lib/clickhouse
+      - ./db-init/clickhouse/init:/docker-entrypoint-initdb.d
+      - ./db-init/clickhouse/config.xml:/etc/clickhouse-server/config.xml
+      - ./db-init/clickhouse/users.xml:/etc/clickhouse-server/users.xml
+      # Create directories for logs and other required paths
+      - ./db-init/clickhouse/logs:/var/log/clickhouse-server
+      - ./db-init/clickhouse/user_files:/var/lib/clickhouse/user_files
+      - ./db-init/clickhouse/format_schemas:/var/lib/clickhouse/format_schemas
+    environment:
+      - CLICKHOUSE_USER=${CLICKHOUSE_USER}
+      - CLICKHOUSE_PASSWORD=${CLICKHOUSE_PASSWORD}
+      - CLICKHOUSE_DB=${CLICKHOUSE_DB}
+    networks:
+      - app-network
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:8123/ping || exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  redis:
+    container_name: redis
+    image: mirror.gcr.io/redis:latest
+    env_file:
+      - database.env
+    environment:
+      - REDIS_PASSWORD
+      - REDIS_PORT
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis_data:/root/redis
+    command: redis-server --requirepass "${REDIS_PASSWORD}"
+
+  minio:
+    image: mirror.gcr.io/minio/minio
+    command: server /data --console-address ":9001"
+    env_file:
+      - database.env
+    ports:
+      - '9000:9000'
+      - '9001:9001'
+    volumes:
+      - 'minio_data:/data'
+
+volumes:
+  shared-db-data:
+  redis_data:
+  clickhouse_data:
+  notification-db-data:
+  maria-db-data:
+  minio_data:
+    driver: local
+
+networks:
+  app-network:
+    driver: bridge
