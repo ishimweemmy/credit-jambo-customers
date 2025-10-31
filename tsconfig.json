@@ -22,6 +22,8 @@
       "@app/common/*": ["libs/common/src/*"],
       "@customer-service/": ["apps/customer-service/src"],
       "@customer-service/*": ["apps/customer-service/src/*"],
+      "@admin-service/": ["apps/admin-service/src"],
+      "@admin-service/*": ["apps/admin-service/src/*"],
       "@integration-service/": ["apps/integration-service/src"],
       "@integration-service/*": ["apps/integration-service/src/*"],
       "@notification-service/": ["apps/notification-service/src"],

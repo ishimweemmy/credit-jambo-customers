@@ -20,6 +20,7 @@ import { createRabbitMQConfig } from './configs/rabbitmq.config';
 import { NOTIFICATION_QUEUE_NAMES } from '@app/common/constants/rabbitmq-constants';
 import { Transport } from '@nestjs/microservices';
 import { Reflector } from '@nestjs/core';
+import { join } from 'path';
 
 export const setUpNotificationConfig = async (app: INestApplication) => {
   const isProdMode =
@@ -136,3 +137,14 @@ const configureRabbitMQ = async (app: INestApplication) => {
 
   await app.startAllMicroservices();
 };
+
+export function enableGRPC(app: INestApplication) {
+  app.connectMicroservice({
+    transport: Transport.GRPC,
+    options: {
+      package: 'notification',
+      protoPath: join(__dirname, './notification.proto'),
+      url: '0.0.0.0:50052',
+    },
+  });
+}

@@ -35,6 +35,7 @@ services:
       - .:/usr/src/app
     ports:
       - '4020:4020'
+      - '50052:50052'
 
   integration-service:
     build:
@@ -63,6 +64,23 @@ services:
     ports:
       - '4040:4040'
       - '5021:5021'
+
+  admin-service:
+    build:
+      context: .
+      dockerfile: ./apps/admin-service/Dockerfile
+    command: yarn start:dev admin-service
+    env_file:
+      - ./apps/admin-service/.env
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - NOTIFICATION_GRPC_URL=notification-service:50052
+    volumes:
+      - /usr/src/app/node_modules
+      - .:/usr/src/app
+    ports:
+      - '4060:4060'
 
 volumes:
   caddy_data:

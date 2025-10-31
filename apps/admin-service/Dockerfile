@@ -17,8 +17,8 @@ COPY . .
 ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}
 
-RUN yarn run build customer-service
+RUN yarn run build:admin
 
-CMD ["yarn", "start:predev", "customer-service"]
+CMD ["yarn", "start:predev", "admin-service"]
 
-# CMD ["yarn", "start","customer-service"]
+# CMD ["yarn", "start","admin-service"]

@@ -46,6 +46,11 @@
             "include": "modules/email-notifier/templates/**/*",
             "watchAssets": true,
             "outDir": "dist/src"
+          },
+          {
+            "include": "**/*.proto",
+            "watchAssets": true,
+            "outDir": "dist"
           }
         ]
       }
@@ -75,6 +80,15 @@
       "sourceRoot": "apps/crons-service/src",
       "compilerOptions": {
         "tsConfigPath": "apps/crons-service/tsconfig.app.json"
+      }
+    },
+    "admin-service": {
+      "type": "application",
+      "root": "apps/admin-service",
+      "entryFile": "main",
+      "sourceRoot": "apps/admin-service/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/admin-service/tsconfig.app.json"
       }
     }
   },

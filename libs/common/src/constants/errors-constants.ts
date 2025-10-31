@@ -216,6 +216,24 @@ export const _400 = {
     code: 'INSUFFICIENT_BALANCE',
     message: 'Insufficient balance to complete this transaction',
   },
+  // Loan management
+  LOAN_NOT_PENDING_REVIEW: {
+    code: 'LOAN_NOT_PENDING_REVIEW',
+    message: 'Loan is not in pending review status',
+  },
+  LOAN_NOT_APPROVED: {
+    code: 'LOAN_NOT_APPROVED',
+    message: 'Loan must be approved before disbursement',
+  },
+  // Customer management
+  CUSTOMER_ALREADY_SUSPENDED: {
+    code: 'CUSTOMER_ALREADY_SUSPENDED',
+    message: 'Customer is already suspended',
+  },
+  CUSTOMER_NOT_SUSPENDED: {
+    code: 'CUSTOMER_NOT_SUSPENDED',
+    message: 'Customer is not suspended',
+  },
 };
 
 // unauthorized
@@ -452,6 +470,14 @@ export const _404 = {
   CUSTOMER_NOT_FOUND: {
     code: 'CUSTOMER_NOT_FOUND',
     message: 'Customer not found',
+  },
+  LOAN_NOT_FOUND: {
+    code: 'LOAN_NOT_FOUND',
+    message: 'Loan not found',
+  },
+  CREDIT_ACCOUNT_NOT_FOUND: {
+    code: 'CREDIT_ACCOUNT_NOT_FOUND',
+    message: 'Credit account not found',
   },
 };
 
